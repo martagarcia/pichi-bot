@@ -49,11 +49,10 @@ namespace Bot_Application.Dialogs
         {
             var message = await activity;
             await context.PostAsync($"Bienvenido al buscador de gifts! Estamos analizando tu mensaje: '{message.Text}'...");
-
         }
 
         [LuisIntent("search-gif")]
-        public async Task Reviews(IDialogContext context, IAwaitable<IMessageActivity> activity, LuisResult result)
+        public async Task SearchGif(IDialogContext context, IAwaitable<IMessageActivity> activity, LuisResult result)
         {
 
             var message = await activity;
@@ -64,9 +63,17 @@ namespace Bot_Application.Dialogs
         [LuisIntent("help")]
         public async Task Help(IDialogContext context, LuisResult result)
         {
-            await context.PostAsync("Hola! Intenta buscar algo así 'dame un gif de starwars', '' or 'muestrame un gif de starwars'");
+            await context.PostAsync("Hola! Intenta buscar algo así 'dame un gif de starwars', 'muestrame un gif de starwars' ...");
 
             context.Wait(this.MessageReceived);
+        }
+
+
+        [LuisIntent("insulto")]
+        public async Task Insulto(IDialogContext context, IAwaitable<IMessageActivity> activity, LuisResult result)
+        {
+            var message = await activity;
+            await context.PostAsync($"No me insultes!");
         }
 
     }
