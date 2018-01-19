@@ -37,16 +37,11 @@ namespace Bot_Application.Dialogs
         [LuisIntent("None")]
         public async Task None(IDialogContext context, LuisResult result)
         {
-            string message = $"Lo siento no te entiendo.'{result.Query}'. Escribe 'help' si necesitas ayuda.";
+            string message = $"Lo siento no te entiendo.'{result.Query}'. Escribe 'help' o 'ayuda' si necesitas ayuda.";
 
             await context.PostAsync(message);
 
             context.Wait(this.MessageReceived);
-        }
-
-        private Task MessageReceived(IDialogContext context, IAwaitable<object> result)
-        {
-            throw new NotImplementedException();
         }
 
         [LuisIntent("search")]
